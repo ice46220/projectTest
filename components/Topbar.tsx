@@ -3,13 +3,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Transition } from '@headlessui/react'
 import { useState,useEffect } from "react";
+
 const MENUS = [
   {
     href: "/",
     text: "หน้าหลัก",
   },
   {
-    href: "/market-diff",
+    href: "/about",
     text: "เกี่ยวกับ",
   },
   {
@@ -17,7 +18,7 @@ const MENUS = [
     text: "ทำแบบทดสอบ",
   },
   {
-    href: "/chart",
+    href: "/contact",
     text: "ติดต่อ",
   },
   

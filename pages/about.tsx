@@ -1,14 +1,14 @@
 import React from "react";
 import Topbar from "../components/Topbar";
-import TestForm from "../components/TestForm";
+import TradeForm from "../components/TestForm";
 import NavLayout from "../layouts/NavLayout";
 
 const test = () => {
   return (
     <NavLayout className="">
     
-     <div className=" bg-lightbg h-screen ">
-        <TestForm/>
+     <div className=" bg-while h-screen ">
+        <TradeForm/>
         
       </div>
   </NavLayout>
