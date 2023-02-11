@@ -17,8 +17,9 @@ module.exports = {
       // => @media (min-width: 1440px) { ... }
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['GrapItimhik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      
     },
     backgroundSize: {
       'auto': 'auto',

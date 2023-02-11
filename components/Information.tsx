@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 
 const Information = () =>{
   return (
-    <div className="w-full  justify-center flex flex-col  p-5 bg-white  cursor-default">
+    <div className="w-full  justify-center flex flex-col  p-5 bg-white  cursor-default ">
       <div>
         <h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">ยินดีต้อนรับ</h3>
         <h4 className="lg:text-2xl sm:text-2xl font-bold text-center mb-7 ">
@@ -12,7 +12,7 @@ const Information = () =>{
           ผู้ทดสอบมีความเสี่ยงหรือไม่ 
         </h4>
       </div>
-      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6  ">
+      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6 mb-2 ">
         <form>
           <div>
             <h2 className="lg:text-2xl sm:text-2xl font-bold text-left mb-7 ">"โรคซึมเศร้า"คืออะไร?</h2>
@@ -25,7 +25,7 @@ const Information = () =>{
         </form>
       </div>
 
-      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6  ">
+      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6  mb-2">
         <form>
           <h2 className="lg:text-2xl sm:text-2xl font-bold text-right mb-7 ">ประเภทของโรคซึมเศร้า</h2>
           <h3 className="lg:text-1xl sm:text-2xl font-bold">ในปัจจุบันที่เราได้พบโรคซึมเศร้านั้นจะเจออยู่โดยปกติคือ 6 ประเภคได้แก่</h3>
@@ -70,7 +70,7 @@ const Information = () =>{
         </form>
       </div>
 
-      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6  ">
+      <div className="container rounded-lg shadow-lg w-full relative bg-darkbg  lg:p-12  sm:mx-auto p-6 mb-2 ">
         <form>
           <h2 className="lg:text-2xl sm:text-2xl font-bold text-left mb-7 ">สาเหตุของโรคซึมเศร้า</h2>
           <h3 className="lg:text-2xl sm:text-2xl font-bold text-left mb-7">

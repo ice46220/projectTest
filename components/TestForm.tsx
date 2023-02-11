@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import  dayjs from "dayjs";
 import { number, string } from "prop-types";
+import Link from 'next/link'
 const TradeForm = () => {
   const [token1, setToken1] = useState('BTC');
   const [token2, setToken2] = useState('USDT');
@@ -229,7 +230,7 @@ interface TypeOrder{
 
   function ShowAsks (){
     return (
-      <div className="  relative lg:w-auto h-52 overflow-y-auto sm:w-full  " >
+      <div className="  relative lg:w-auto h-52 overflow-y-auto sm:w-full font-['Itim']  " >
       <h2 className=" text-xl lg:px-6 lg:py-3 sm:p-1 font-bold">Asks</h2>
       <table className="   lg:w-40 h-40  sm:w-full  ">
             <thead>
@@ -338,8 +339,8 @@ interface TypeOrder{
           
         </div>
         <div className="flex justify-center">
-          <button className="rounded bg-darkbg text-white px-12 py-4 " type="submit" value="Fetch" 
-          onClick={getApi}>ทำการทดสอบ</button>
+        <Link href="/"><button className="rounded bg-darkbg text-white px-12 py-4 " type="submit" value="Fetch" 
+          >ทำการทดสอบ</button></Link>
         </div>
       </form>
       </div>

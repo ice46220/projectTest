@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 
 const ConTact = () =>{
   return (
-    <div className="w-full  justify-center flex flex-col  p-5 bg-white  cursor-default">
+    <div className="w-full  justify-center flex flex-col  p-5 bg-white  cursor-default font-['Itim']">
         <div>
           <h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">ติดต่อ</h3>
           <h4 className="lg:text-2xl sm:text-2xl font-bold text-center mb-7 ">กรมสุขภาพจิตและเบอร์โทรติดต่อทั่วไทย</h4>

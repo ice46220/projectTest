@@ -31,7 +31,7 @@ const Topbar = () => {
   console.log(router.pathname);
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className=" border-gray-200  sm:px-4 py-4  bg-darkbg relative cursor-default ">
+    <nav className=" border-gray-200  sm:px-4 py-4  bg-darkbg relative cursor-default font-['Itim'] ">
     <div className="container flex flex-wrap justify-between items-center mx-auto ">
    
     <div className=" flex ">
@@ -42,7 +42,7 @@ const Topbar = () => {
         </div>
     </div>
 
-    <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
+    <div className="hidden w-full md:block md:w-auto " id="mobile-menu">
             <div className="flex text-black space-x-12  " >
             <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             {MENUS.map((menu) => (
@@ -52,7 +52,7 @@ const Topbar = () => {
                     router.pathname === menu.href ? "text-lightblue" : "          "
                   }`}
                 >
-                  <div className="space-x-4 lg:text-lg sm:text-sm space-x-reverse...">
+                  <div className="space-x-4  lg:text-lg sm:text-sm space-x-reverse...">
                   {menu.text}
                   </div>
                 </a></li>
