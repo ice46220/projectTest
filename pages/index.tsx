@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Information from '../components/Information'
-import MarketDiffForm from '../components/MarketDiffForm'
+import MarketDiffForm from '../components/DocumentForm'
 
 import Topbar from '../components/Topbar'
 import styles from '../styles/Home.module.css'
