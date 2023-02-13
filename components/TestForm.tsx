@@ -4,6 +4,7 @@ import axios from "axios";
 import  dayjs from "dayjs";
 import { number, string } from "prop-types";
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 const TradeForm = () => {
   const [token1, setToken1] = useState('BTC');
   const [token2, setToken2] = useState('USDT');
@@ -19,7 +20,7 @@ const TradeForm = () => {
   const [orderIndex, setOrederindex] = useState(0);
 
   const [display,setDisplay] = useState(0);
-
+  const router = useRouter();
   let token:number = 0;
   let priceAvg:number = 0;
   let inputUSDT: number = Number(amount);
@@ -339,8 +340,10 @@ interface TypeOrder{
           
         </div>
         <div className="flex justify-center">
-        <Link href="/"><button className="rounded bg-darkbg text-white px-12 py-4 " type="submit" value="Fetch" 
-          >ทำการทดสอบ</button></Link>
+          <Link href="/testDocument">
+          <button className="rounded bg-darkbg text-white px-12 py-4 " type="submit" value="Fetch"  onClick={() => router.push('/testDocument')}
+          >ทำการทดสอบ</button>
+          </Link>
         </div>
       </form>
       </div>
