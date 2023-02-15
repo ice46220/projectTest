@@ -5,329 +5,89 @@ import  dayjs from "dayjs";
 import { number, string } from "prop-types";
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-const TradeForm = () => {
-  const [token1, setToken1] = useState('BTC');
-  const [token2, setToken2] = useState('USDT');
-  
-  
-  const [asks,setAsks] = useState([]);
-  const [bids,setBids] = useState([]);
-
-  const [amount,setAmount] = useState("");
-  const [value, setValue] = useState("USDT");
-
-  const [orderDetail, setOrederdetail] = useState<TypeOrder[]>([]);
-  const [orderIndex, setOrederindex] = useState(0);
-
-  const [display,setDisplay] = useState(0);
-  const router = useRouter();
-  let token:number = 0;
-  let priceAvg:number = 0;
-  let inputUSDT: number = Number(amount);
-  let i :number = 0;
-interface TypeOrder{
-  time : string,
-  symbol: string,
-  type :string,
-  price : number,
-  input : string,
-  output: number
-}
+const TestForm = () => {
+  const [convert, setConvert] = useState(true);
+  const [allData,setAllData] =useState([{}]);
+  const [answer1,setAnswer1] =useState(0);
+  const [answer2,setAnswer2] =useState(0);
+  const [answer3,setAnswer3] =useState(0);
+  const [answer4,setAnswer4] =useState(0);
+  const [answer5,setAnswer5] =useState(0);
+  const [answer6,setAnswer6] =useState(0);
+  const [answer7,setAnswer7] =useState(0);
+  const [answer8,setAnswer8] =useState(0);
+  const [answer9,setAnswer9] =useState(0);
+  const url =`https://script.googleusercontent.com/macros/echo?user_content_key=HUpsAgoYA3yCxP13UOAk_1Qv2ICV8Mg49f1B3Z4swO5ITagNyvjevKDaRok9lQ6kAkZe0KuJqZCZsJ1W-hvd1PwNnSPmLu2Ym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnAwvzESfjfjJtOA0fe94XWysBDamm84KJUOiXFvDW57QY8loQO0yqfVIdrXAtgs-_8UZDZ1anjVgEH9ikux9WG8aVN0i6HkeWA&lib=Mc-N59_DWmDBvu7pwVajzqpogFqLoYSAg` ;
   useEffect(() => {
-    
-  },);
- //setOrederdetail([]);
-  const getApi = async (e:React.FormEvent) => { 
-    e.preventDefault()
-    const newUrl2 =`https://api1.binance.com/api/v3/depth?symbol=${token1}${token2}` 
-    const res2 = await  fetch(newUrl2);
-    const link1 = await res2.json();
-    setAsks(link1.asks) ;
-    setBids(link1.bids);
-    
-    //someAsk()
-  }
-  //console.log(value,amount);
-  const buyValue =() => {
-   console.log(value,amount);
-   if(value == token2){  //USDT
-     for( let item of asks){
-      if(inputUSDT > 0){
-        buyOutputToken2(item);
-      }
-      else{          
-        break;
-      }
-   } 
-  }
-  else{                           //BTC
-    for( let item of asks){
-      if(inputUSDT > 0){
-        buyOutputToken1(item);
-      }
-      else{
-        break;
-      }
-    }
-  }
-  let formatdate = dayjs().format("DD/MM/YYYY h:mm");
-    const detail : TypeOrder ={
-        time : formatdate,
-        symbol: token1+"_"+token2,
-        type :"Buy",
-        price : priceAvg/i,
-        input : amount,
-        output: token
-    }
-    orderDetail.push(detail);
-    
-    console.log(orderDetail);
-    setDisplay(display+1);
-    
-  }
-
-
-  function buyOutputToken2(order : any) {
-    
-    let a : number = parseFloat(order[0]);
-    let b : number = parseFloat(order[1]);
    
-    //console.log("price= "+a+"\tAmount= "+b);
-    if(inputUSDT >= (a*b)){
-        token = b + token;
-        priceAvg = a + priceAvg;
-        inputUSDT = inputUSDT-(a*b) ;
-        i++
-        //console.log(token,priceAvg,inputUSDT);
-    }
-    else if (inputUSDT<(a*b)){  //เงินเหลือ
-        let fewToken : number = (inputUSDT*b)/a; //เหรียญที่ซื้อได้ด้วยเงินที่เหลือจริงๆ
-                            //เหรียญมีจำนวนเยอะกว่าที่ต้องการ
-            token =  fewToken + token ;
-            priceAvg = a + priceAvg; 
-            inputUSDT = 0; 
-            i++
-            console.log(token,priceAvg,inputUSDT,i);
-            
-    }
-  }
-
-  function buyOutputToken1(order : any) {
-    let a : number = parseFloat(order[0]); //ถ้าเป็นBTC
-    let b : number = parseFloat(order[1]);
-    if(inputUSDT >= b){
-      inputUSDT = inputUSDT - b;
-      token = (a*b) + token ; //ได้กี่USDT
-      priceAvg = a + priceAvg;
-      i++;
-    }
-    else if ( inputUSDT< b){
-      let fewToken :number = inputUSDT*a;
-      token = fewToken + token;
-      priceAvg = a + priceAvg;  
-      inputUSDT = 0;
-      i++
-    }
-           
-    
-  }
-
-
-  const sellValue =() => {
-    console.log(value,amount);
-   if(value == token2){  //USDT
-     for( let item of bids){
-      if(inputUSDT > 0){
-        sellOutputToken2(item);
-      }
-      else{          
-        break;
-      }
-   } 
-  }
-  else{                           //BTC
-    for( let item of bids){
-      if(inputUSDT > 0){
-        sellOutputToken1(item);
-      }
-      else{
-        break;
-      }
-    }
-  }
-  let formatdate = dayjs().format("DD/MM/YYYY h:mm");
-    const detail ={
-        time : formatdate,
-        symbol: token1+"_"+token2,
-        type :"Sell",
-        price : priceAvg/i,
-        input : amount,
-        output: token
-    }
-    orderDetail.push(detail);
-    
-    console.log(orderDetail);
-    setDisplay(display+1);
-    
-  }
-
-  function sellOutputToken2(order : any) {
-    
-    let a : number = parseFloat(order[0]);
-    let b : number = parseFloat(order[1]);
-   
-    //console.log("price= "+a+"\tAmount= "+b);
-    if(inputUSDT >= (a*b)){
-        token = b + token;
-        priceAvg = a + priceAvg;
-        inputUSDT = inputUSDT-(a*b) ;
-        i++
-        //console.log(token,priceAvg,inputUSDT);
-    }
-    else if (inputUSDT<(a*b)){  //เงินเหลือ
-        let fewToken : number = (inputUSDT*b)/a; //เหรียญที่ซื้อได้ด้วยเงินที่เหลือจริงๆ
-                            //เหรียญมีจำนวนเยอะกว่าที่ต้องการ
-            token =  fewToken + token ;
-            priceAvg = a + priceAvg; 
-            inputUSDT = 0; 
-            i++
-            console.log(token,priceAvg,inputUSDT,i);
-            
-    }
-            
-    
-  }
+  });
   
-
-  function sellOutputToken1(order : any){
-    let a : number = parseFloat(order[0]); //ถ้าเป็นBTC
-    let b : number = parseFloat(order[1]);
-    if(inputUSDT >= b){
-      inputUSDT = inputUSDT - b;
-      token = (a*b) + token ; //ได้กี่USDT
-      priceAvg = a + priceAvg;
-      i++;
-    }
-    else if ( inputUSDT< b){
-      let fewToken :number = inputUSDT*a;
-      token = fewToken + token;
-      priceAvg = a + priceAvg;  
-      inputUSDT = 0;
-      i++
-    }
-  }
-  // const someAsk = () => {
-  //   console.log(asks)
-  //   const someAsks = asks.filter((item:string,index:number) =>{
-  //     if(index<4){
-  //       return item;
-  //     }
-  //   })
-  //   setAsks(someAsks)  
-  //   console.log(someAsks);
-      
+  const getContract = async () => {
+    setConvert(!convert);
+    fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      setAllData(data.data)
+    });
     
-  // }
-
-  function ShowAsks (){
-    return (
-      <div className="  relative lg:w-auto h-52 overflow-y-auto sm:w-full font-['Itim']  " >
-      <h2 className=" text-xl lg:px-6 lg:py-3 sm:p-1 font-bold">Asks</h2>
-      <table className="   lg:w-40 h-40  sm:w-full  ">
-            <thead>
-            <tr>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs lg:text-lg">Price({token2})</th>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg">Amount({token1})</th>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg">Total</th>
-            </tr> 
-            </thead>
-            <tbody>
-            {asks.map((contest, idx) => (
-            <tr key={idx} className="">
-            <td scope="row" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg font-medium text-red-600 whitespace-nowrap">{Number(contest[0])}</td>
-            <td className="lg:px-6 lg:py-3 sm:p-1 text-darkbg sm:text-xs  lg:text-lg">{Number(contest[1])}</td>
-            <td className="lg:px-6 lg:py-3 sm:p-1 text-darkbg sm:text-xs  lg:text-lg">{(Number(contest[0])*Number(contest[1]))}</td>
-           </tr>
-            ))} 
-          </tbody>
-        </table>
-      </div>
-  )}
-
-  function ShowBids (){
-    return (
-      <div className="  relative lg:w-auto h-52 overflow-y-auto sm:py-3 lg:py-0 sm:w-full " >
-      <h2 className=" text-xl lg:px-6 lg:py-3 sm:p-1 font-bold">Bids</h2>
-      <table className="   lg:w-40 h-40  sm:w-full  ">
-            <thead>
-            <tr>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs lg:text-lg">Price({token2})</th>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg">Amount({token1})</th>
-              <th  scope="col" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg">Total</th>
-            </tr> 
-            </thead>
-            <tbody>
-            {bids.map((contest, idx) => (
-            <tr key={idx} className="">
-            <td scope="row" className="lg:px-6 lg:py-3 sm:p-1 sm:text-xs  lg:text-lg font-medium text-green-600 whitespace-nowrap">{Number(contest[0])}</td>
-            <td className="lg:px-6 lg:py-3 sm:p-1 text-darkbg sm:text-xs  lg:text-lg">{Number(contest[1])}</td>
-            <td className="lg:px-6 lg:py-3 sm:p-1 text-darkbg sm:text-xs  lg:text-lg">{(Number(contest[0])*Number(contest[1]))}</td>
-           </tr>
-            ))} 
-          </tbody>
-        </table>
-      </div>
-  )}
-
-  const ShowOrder =() =>{
-    return(
-      
-      <div className="container  px-4 py-2    sm:mx-auto  ">
-      <h3 className=" text-xl font-bold  text-left relative py-2">Order history</h3>
-      
-      <div className="  overflow-x-auto shadow-md rounded border-collapse  relative " >
-      <table className=" bg-white  w-full relative    ">
-            <thead>
-              <tr className="border-b-2 border-gray">
-                <th className="p-4 w-10  ">Order ID</th>
-                <th className="p-4 w-10 ">Date</th>
-                <th className="p-4 w-10 ">Symbol</th>
-                <th className="p-4 w-10 ">Type</th>
-                <th className="p-4 w-10 ">Price</th>
-                <th className="p-4 w-10 ">Input</th>
-                <th className="p-4 w-10 ">Output</th>
-              </tr>
-            </thead>
-            <tbody>
-            {orderDetail.map((contest, idx) => (
-            <tr key={idx} className="text-center">
-            <td className="p-4 ">#{idx+1}</td>
-            <td className="p-4" >{contest.time}</td>
-            <td className="p-4" >{contest.symbol}</td>
-            <td className="p-4 ">{contest.type}</td>
-            <td className="p-4" >{contest.price}</td>
-            <td className="p-4" >{contest.input}</td>
-            <td className="p-4" >{contest.output}</td>
-          </tr>
-            ))} 
-          </tbody>
-        </table>
-      </div>
-     
-      </div>
-     
-      
-      
-    )
+    
   }
-  //console.log(data);
-  //console.log(token1,token2);
-
+  const delData = (a:any,b:any) => {
+    console.log("a",typeof(a),a);
+     console.log("b",typeof(b),b);
+     switch(a) { 
+      case 0: { 
+        setAnswer1(b);
+        break; 
+      } 
+      case 1: { 
+        setAnswer2(b);
+        break; 
+      }
+      case 2: { 
+        setAnswer3(b);
+        break; 
+      }
+      case 3: { 
+        setAnswer4(b); 
+        break; 
+      }
+      case 4: { 
+        setAnswer5(b); 
+        break; 
+      }
+      case 5: { 
+        setAnswer6(b); 
+        break; 
+      }
+      case 6: { 
+        setAnswer7(b); 
+        break; 
+      }
+      case 7: { 
+        setAnswer8(b); 
+        break; 
+      }
+      case 8: { 
+        setAnswer9(b); 
+        break; 
+      }
+      default: { 
+        alert("กรุณาเลือกคำตอบ");
+         break; 
+      }
+   } 
+  
+  }
+  const getAllSumAnswer = () => { 
+    let sum = answer1+answer2+answer3+answer4+answer5+answer6+answer7+answer8+answer9; 
+    alert(sum);
+  } 
   return (
     <div className="w-full  justify-center flex flex-col  p-5 bg-lightbg  cursor-default">
       <div className="container rounded-lg shadow-lg w-full relative bg-white  lg:p-12  sm:mx-auto p-6   ">
       <form>
-        <h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">แบบทดสอบ</h3>
+      {convert ? (<><h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">แบบทดสอบ</h3>
         <div className="flex-row  lg:flex-row sm:flex-col mb-5 justify-around">
           <div className="  ">
             <p className="text-lg font-bold text-darkbg py-2 lg:text-lg sm:text-sm text-center">ประเมินความเสี่ยงภาวะซึมเศร้า</p>
@@ -340,11 +100,51 @@ interface TypeOrder{
           
         </div>
         <div className="flex justify-center">
-          <Link href="/testDocument">
-          <button className="rounded bg-darkbg text-white px-12 py-4 " type="submit" value="Fetch"  onClick={() => router.push('/testDocument')}
-          >ทำการทดสอบ</button>
-          </Link>
+          {/* <Link href="/testDocument">
+          <button className="rounded bg-darkbg text-white px-12 py-4 ">ทำการทดสอบ</button>
+          </Link> */}
+           <button className="rounded bg-darkbg text-white px-12 py-4 "
+           onClick={() => getContract()}
+           >ทำการทดสอบ</button>
         </div>
+        </>) : (<>
+          <h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">แบบทดสอบ 9Q</h3>
+        <div className="flex   lg:flex-row sm:flex-col mb-5 justify-around">
+        <div className="container     sm:mx-auto py-4  ">
+        {allData.map((contest, idx) => (
+            <div key={idx} className="py-4">
+              <h3 className=" text-3xl font-bold  text-center relative">ข้อที่ {idx+1}</h3>
+              <h3 className=" text-3xl font-bold  text-center relative">{contest.QUESTIONNAME}</h3>
+              <div className="grid grid-cols-2 grid-rows-2 m-9 text-center">
+                <div className="m-9">
+                  <div className="rounded bg-darkbg hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-red-300 text-white px-12 py-4 "
+                   onClick={()=>delData(idx,contest.ASK1SCORE)}>{contest.ASK1}</div>
+                </div>
+                <div className="m-9">
+                  <div className="rounded bg-darkbg hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-red-300 text-white px-12 py-4 " 
+                  onClick={()=>delData(idx,contest.ASK2SCORE)}>{contest.ASK2}</div>
+                </div>
+                <div className="m-9">
+                  <div className="rounded bg-darkbg hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-red-300 text-white px-12 py-4 "
+                  onClick={()=>delData(idx,contest.ASK3SCORE)}>{contest.ASK3}</div>
+                </div>
+                <div className="m-9">
+                  <div className="rounded bg-darkbg hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-red-300 text-white px-12 py-4 "  
+                  onClick={()=>delData(idx,contest.ASK4SCORE)}>{contest.ASK4}</div>
+                </div>
+              </div>
+              <div className="  overflow-x-auto shadow-md rounded border-collapse border border-sky-500 relative ">
+              </div>
+            </div>
+            ))} 
+            <div className="flex justify-center">
+          <button className="rounded bg-darkbg text-white px-12 py-4 " 
+          onClick={()=>getAllSumAnswer()}>ส่งคำตอบ</button>
+        </div>
+        </div>
+        </div>
+
+          </>)} 
       </form>
       </div>
 
@@ -352,4 +152,4 @@ interface TypeOrder{
   );
 };
 
-export default TradeForm;
+export default TestForm;
