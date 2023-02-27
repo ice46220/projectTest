@@ -1,10 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
-import axios from "axios";
-import  dayjs from "dayjs";
-import { number, string } from "prop-types";
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+
+
 const TestForm = () => {
   const [convert, setConvert] = useState(true);
   const [allData,setAllData] =useState([{}]);
@@ -90,11 +87,11 @@ const TestForm = () => {
       {convert ? (<><h3 className="lg:text-4xl sm:text-2xl font-bold text-center mb-7 ">แบบทดสอบ</h3>
         <div className="flex-row  lg:flex-row sm:flex-col mb-5 justify-around">
           <div className="  ">
-            <p className="text-lg font-bold text-darkbg py-2 lg:text-lg sm:text-sm text-center">ประเมินความเสี่ยงภาวะซึมเศร้า</p>
+            <p className="text-lg font-bold text-black py-2 lg:text-lg sm:text-sm text-center">ประเมินความเสี่ยงภาวะซึมเศร้า</p>
             
           </div>
           <div className="  ">
-            <p className="text-lg font-bold text-darkbg py-2 lg:text-lg sm:text-sm">โดยการประเมินแบบทดสอบจะด้วยหลักประเมิน 9Q ซึ่งเป็นแบบทดสอบเบื่องต้นเพื่อประเมิน ความเสี่ยงที่จะเป็นภาวะซึมเศร้า โดยหลังจากทำแบบประเมิน จะทำการแสดงผลประเมิน การทำแบบทดสอบและสามารถรู้ผลการทำแบบทดสอบได้ทันทีามเสี่ยงภาวะซึมเศร้า</p>
+            <p className="text-lg font-bold text-black py-2 lg:text-lg sm:text-sm">โดยการประเมินแบบทดสอบจะด้วยหลักประเมิน 9Q ซึ่งเป็นแบบทดสอบเบื่องต้นเพื่อประเมิน ความเสี่ยงที่จะเป็นภาวะซึมเศร้า โดยหลังจากทำแบบประเมิน จะทำการแสดงผลประเมิน การทำแบบทดสอบและสามารถรู้ผลการทำแบบทดสอบได้ทันทีามเสี่ยงภาวะซึมเศร้า</p>
             
           </div>
           
@@ -103,7 +100,7 @@ const TestForm = () => {
           {/* <Link href="/testDocument">
           <button className="rounded bg-darkbg text-white px-12 py-4 ">ทำการทดสอบ</button>
           </Link> */}
-           <button className="rounded bg-darkbg text-white px-12 py-4 "
+           <button className="rounded bg-darkbg text-black px-12 py-4 "
            onClick={() => getContract()}
            >ทำการทดสอบ</button>
         </div>

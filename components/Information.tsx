@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useState,useEffect } from "react";
+import Link from "next/link";
 
 const Information = () =>{
   return (
@@ -127,6 +128,13 @@ const Information = () =>{
               การทำงาน และการเข้าสังคมหรือความสัมพันธ์กับผู้อื่น รวมถึงรู้สึกผิดหวัง เศร้า หรือไม่มีความสุขโดยไม่ทราบสาเหตุ
             </p>
           </div>
+          <div>
+               <h4 className="lg:text-2xl sm:text-2xl font-bold text-center mb-7 ">อยากทราบว่ามีความเสี่ยงมั้ย หรือให้เราช่วยเหลือท่าน</h4>
+                <div className="flex justify-center">
+                  <Link href="/test"><button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >ทำแบบทดสอบ</button></Link>
+                  <button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >กรอกแบบฟอร์มขอความช่วยเหลือ</button>
+                </div>  
+            </div>
         </form>
       </div>
 

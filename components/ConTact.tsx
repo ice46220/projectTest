@@ -1,5 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import Link from "next/link";
 
 const ConTact = () =>{
   return (
@@ -34,8 +35,8 @@ const ConTact = () =>{
             <div>
                <h4 className="lg:text-2xl sm:text-2xl font-bold text-center mb-7 ">อยากทราบว่ามีความเสี่ยงมั้ย หรือให้เราช่วยเหลือท่าน</h4>
                 <div className="flex justify-center">
-                  <button className="rounded bg-white text-black px-12 py-4 " type="submit" value="Fetch" >ทำการทดสอบ</button>
-                  <button className="rounded bg-white text-black px-12 py-4 " type="submit" value="Fetch" >กรอกแบบฟอร์มขอความช่วยเหลือ</button>
+                  <Link href="/test"><button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >ทำแบบทดสอบ</button></Link>
+                  <button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >กรอกแบบฟอร์มขอความช่วยเหลือ</button>
                 </div>  
             </div>
           </div>
