@@ -6,7 +6,7 @@ import { useState,useEffect } from "react";
 
 const MENUS = [
   {
-    href: "/",
+    href: "/information",
     text: "หน้าหลัก",
   },
   {
@@ -20,6 +20,10 @@ const MENUS = [
   {
     href: "/contact",
     text: "ติดต่อ",
+  },
+  {
+    href: "/",
+    text: "logout",
   },
   
 ];

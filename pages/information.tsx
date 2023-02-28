@@ -6,7 +6,7 @@ import Information from '../components/Information'
 import Topbar from '../components/Topbar'
 import styles from '../styles/Home.module.css'
 import Login from '../components/Login'
-const Home: NextPage = () => {
+const information = () => {
   return (
     
 
@@ -16,12 +16,10 @@ const Home: NextPage = () => {
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@200&family=Roboto:wght@100&display=swap" rel="stylesheet"/>
       </div>
-        {/* <Topbar/>
-        <Information/> */}
-        <Login/>
-        
+        <Topbar/>
+        <Information/>
     </div>
   )
 }
 
-export default Home
+export default information

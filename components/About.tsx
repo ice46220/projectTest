@@ -21,7 +21,7 @@ const ConTact = () =>{
           <br/>
             <div className="flex justify-center">
                   <Link href="/test"><button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >เริ่มทำแบบทดสอบ</button></Link>
-                  <Link href="/"><button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >อยากทราบความรู้พิ้นฐาน</button></Link>
+                  <Link href="/information"><button className="rounded bg-white text-black px-12 py-4 mx-1" type="submit" value="Fetch" >อยากทราบความรู้พิ้นฐาน</button></Link>
             </div>
         </form>
       </div>

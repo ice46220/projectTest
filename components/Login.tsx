@@ -1,7 +1,23 @@
-
-
-
+import React from "react";
+import { useState,useEffect } from "react";
+import axios from "axios";
+import Link from "next/link";
 const Login = () =>{
+  const [id, setID] = useState('');
+  const [password, setPassword] = useState('');
+  const [a, setA] = useState('');
+  let user = "wa";
+  let pass = "1234"
+  function checkID(){
+    console.log(id);
+    console.log(password);
+    if(id == user && password == pass ){
+      setA('/information')
+    }
+    else{
+      setA('/')
+    }
+  }
   return (
     <div className="w-full flex flex-col  p-5 bg-white  cursor-default font-['Itim']">
         <div>
@@ -13,14 +29,14 @@ const Login = () =>{
 
           <label className="text-xl">ID :</label>
           <input type="Name" className="rounded bg-white text-black px-10 py-2 mx-4 "
-            id="exampleFormControlInputName"  placeholder="ID ผู้ใช่" /><br/><br/>
+            id="exampleFormControlInputName"  placeholder="ID ผู้ใช่" name="id" onChange={e => setID(e.target.value)} /><br/><br/>
 
             <label className="text-xl">Password: </label>
           <input type="password" className="rounded bg-white text-black px-10 py-2 mx-4"
-            id="exampleFormControlInputPassword"  placeholder="รหัสผ่าน" /><br/><br/>
+            id="exampleFormControlInputPassword"  placeholder="รหัสผ่าน" name="password" onChange={e => setPassword(e.target.value)}/><br/><br/>
 
             <div className="flex justify-center">
-          <button className="rounded bg-white text-black px-12 py-4 mx-5" type="submit" value="Fetch" >Login</button>
+          <Link  href={a}><button className="rounded bg-white text-black px-12 py-4 mx-5" onClick={ () =>checkID()} >Login</button></Link>
         </div>
         </form>
 
