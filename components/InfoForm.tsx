@@ -1,7 +1,7 @@
 
 
 
-const infoform = () =>{
+const Infoform = () =>{
   return (
     <div className="w-full  justify-center flex flex-col  p-5 bg-white  cursor-default font-['Itim']">
         <div>
@@ -58,4 +58,4 @@ const infoform = () =>{
   );
 }
 
-export default infoform;
+export default Infoform;

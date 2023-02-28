@@ -4,7 +4,7 @@ import TestForm from "../components/TestForm";
 import NavLayout from "../layouts/NavLayout";
 import Infoform from "../components/InfoForm";
 
-const test = () => {
+const infoform = () => {
   return (
     <NavLayout className="">
     <div>
@@ -21,4 +21,4 @@ const test = () => {
   );
 };
 
-export default test;
+export default infoform;
